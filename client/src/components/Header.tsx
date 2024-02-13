@@ -8,7 +8,7 @@ const Header: React.FC = () => {
   const [openNav, setOpenNav] = useState<boolean>(false);
   return (
     <>
-      <div className="wrapper lg:flex lg:items-center lg:justify-between lg:px-5">
+      <div className="wrapper lg:flex lg:items-center lg:justify-between lg:p-5 absolute w-full h-[50px] top-0 z-20">
         <div className="flex py-4 px-2 lg:px-0 justify-between items-center">
           <Link to="/home">
             <img src={logo} alt="logo" className="block h cursor-pointer" />
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
 
         {/* Large screens */}
 
-        <div className="hidden lg:flex  bg-white lg:relative lg:bg-none space-x-4">
+        <div className="hidden lg:flex   lg:relative lg:bg-none space-x-4">
           {[
             { name: "Home", link: "/home" },
             { name: "About", link: "/about" },
@@ -74,7 +74,7 @@ const Header: React.FC = () => {
                 <Link
                   to={link}
                   key={index}
-                  className="inline-block  py-4  hover:bg-white/75 w-full text-center"
+                  className="inline-block  py-2 px-3  w-full text-center"
                 >
                   {name}
                 </Link>

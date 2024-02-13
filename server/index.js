@@ -56,3 +56,17 @@ app.get("/api/places/name/:name", async (req, res) => {
     res.status(500).send("Error retrieving places by name");
   }
 });
+
+/** get sections api calls */
+
+app.get("/api/places/name/:name/section", async (req,res) => {
+  try{
+    const {name } = req.params;
+    const place  = await Place.findOne({name})
+
+    if (!place){
+      return res.status(404).json({message: "Place not found"})
+    }
+    
+  }
+});
