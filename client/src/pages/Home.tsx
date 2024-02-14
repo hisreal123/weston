@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import CustormButton from "../components/CustormButton";
 import Discover from "../components/Discover";
+// import axios from "axios";
+import Sections from "../components/Sections";
 
 const Home: React.FC = () => {
   return (
@@ -17,13 +19,15 @@ const Home: React.FC = () => {
             </p>
 
             <div className="flex relative">
-              <Link to="/">
-                <CustormButton
-                  context="Discover Properties"
-                  custom_style="bg-black text-white hover:bg-white hover:text-black  relative"
-                />
+              <div>
+                <Link to="/properties">
+                  <CustormButton
+                    context="Discover Properties"
+                    custom_style="bg-black text-white hover:bg-white hover:text-black  relative"
+                  />
+                </Link>
                 <Discover />
-              </Link>
+              </div>
 
               <Link to="/about">
                 <CustormButton
@@ -57,6 +61,23 @@ const Home: React.FC = () => {
               We have the bebst to suit your interes and are all afordable{" "}
             </p>
           </div>
+
+          {/* <Sections /> */}
+        </section>
+        {/* Areas */}
+
+        <section className="wrap ">
+          <div className="top text-center lg:my-14">
+            <h1 className="text-md  font-bold md:text-2xl ">
+              WHAT AREA ARE YOU LOOKING FOR?
+            </h1>
+            <p className="text-#808080 text-xs md:text-sm ">
+              We have the bebst to suit your interes and are all afordable{" "}
+            </p>
+            ex
+          </div>
+
+          <Sections />
         </section>
       </div>
     </>

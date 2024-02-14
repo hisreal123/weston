@@ -4,13 +4,18 @@ const connectDB = require("./db");
 const Place = require("./model/Place");
 const { sections } = require("./mockup/data");
 const mockupData = require("./mockup/data");
-
-// const cors = require(cors());
+const cors = require("cors");
 
 connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://p-weston.vercel.app/"],
+    Credential: true,
+  })
+);
 
 // const insertPlace = new Place(mockupData);
 
@@ -59,14 +64,14 @@ app.get("/api/places/name/:name", async (req, res) => {
 
 /** get sections api calls */
 
-app.get("/api/places/name/:name/section", async (req,res) => {
-  try{
-    const {name } = req.params;
-    const place  = await Place.findOne({name})
+// app.get("/api/places/name/:name/section", async (req,res) => {
+//   try{
+//     const {name } = req.params;
+//     const place  = await Place.findOne({name})
 
-    if (!place){
-      return res.status(404).json({message: "Place not found"})
-    }
-    
-  }
-});
+//     if (!place){
+//       return res.status(404).json({message: "Place not found"})
+//     }
+
+//   }
+// });

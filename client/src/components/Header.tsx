@@ -46,7 +46,7 @@ const Header: React.FC = () => {
               { name: "Contact", link: "/contact" },
             ].map(
               ({ name, link }, index): ReactNode => (
-                <div className=" w-[80%] mx-auto">
+                <div className=" w-[80%] mx-auto" key={index}>
                   <Link
                     to={link}
                     key={index}
@@ -62,7 +62,7 @@ const Header: React.FC = () => {
 
         {/* Large screens */}
 
-        <div className="hidden lg:flex   lg:relative lg:bg-none space-x-4">
+        <div className="hidden lg:fle backdrop:lg:relative lg:bg-none space-x-4">
           {[
             { name: "Home", link: "/home" },
             { name: "About", link: "/about" },
@@ -70,7 +70,7 @@ const Header: React.FC = () => {
             { name: "Contact", link: "/contact" },
           ].map(
             ({ name, link }, index): ReactNode => (
-              <div className=" ">
+              <div className=" " key={index}>
                 <Link
                   to={link}
                   key={index}
