@@ -62,7 +62,7 @@ const Home: React.FC = () => {
             </p>
           </div>
 
-          {/* <Sections /> */}
+          <Sections />
         </section>
         {/* Areas */}
 
@@ -76,8 +76,6 @@ const Home: React.FC = () => {
             </p>
             ex
           </div>
-
-          <Sections />
         </section>
       </div>
     </>

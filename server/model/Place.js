@@ -7,6 +7,7 @@ const PropertyDetailsSchema = new Schema({
     roof: String,
     construction: String,
     cooling: String,
+    images: [String],
   },
   interiorDetails: {
     interiorSize: Number,
@@ -14,11 +15,13 @@ const PropertyDetailsSchema = new Schema({
     bathrooms: Number,
     garage: Number,
     laundryRoom: String,
+    images: [String],
   },
   roomDimensions: {
     livingRoom: Number,
     bathroom: Number,
     kitchen: Number,
+    images: [String],
   },
   propertyInfo: {
     propertyType: String,

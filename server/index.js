@@ -1,15 +1,16 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const connectDB = require("./db");
-const Place = require("./model/Place");
-const { sections } = require("./mockup/data");
-const mockupData = require("./mockup/data");
+const Team = require("./model/Team");
 const cors = require("cors");
+const router = require("./router/routers");
+const readyData = require("./mockup/property");
+const Property = require("./model/Property");
 
 connectDB();
 
 const app = express();
 app.use(express.json());
+
 app.use(
   cors({
     origin: ["http://localhost:5173", "https://p-weston.vercel.app/"],
@@ -17,12 +18,9 @@ app.use(
   })
 );
 
-// const insertPlace = new Place(mockupData);
-
-// insertPlace
-//   .save()
-//   .then(() => console.log("Place inserted into Database !!"))
-//   .catch((err) => console.log("Data not sent !!", err));
+// Property.insertMany(readyData)
+//   .then((properties) => console.log("Data inserted !!!"))
+//   .catch((err) => console.log("Not inserted !!:", err));
 
 const PORT = 4000;
 
@@ -31,47 +29,20 @@ app.get("/", (req, res) => {
 });
 
 /** All places api calls */
-app.get("/api/places", async (req, res) => {
-  try {
-    const places = await Place.find();
-    res.json(places);
-  } catch (err) {
-    console.log("Error retrieving places:", err);
-    res.status(500).send("Error retrieving places");
-  }
-});
+app.use("/api/properties", router);
 
 app.listen(PORT, () => {
   console.log(" Listening on port", PORT);
 });
 
-/** Single place api calls */
+/** get team*/
 
-app.get("/api/places/name/:name", async (req, res) => {
+app.get("/api/team", async (req, res) => {
   try {
-    const name = req.params.name;
-    const places = await Place.find({ name: { $regex: name, $options: "i" } });
-
-    if (!places.length === 0) {
-      return res.status(404).send({ message: "No Place found with that name" });
-    }
-    res.json(places);
+    const team = await Team.find();
+    res.json({ team });
   } catch (err) {
-    console.log("Error retrieving place:", err);
-    res.status(500).send("Error retrieving places by name");
+    console.log("Error fetching team:", err);
+    res.status(500).send("Error retrieving team");
   }
 });
-
-/** get sections api calls */
-
-// app.get("/api/places/name/:name/section", async (req,res) => {
-//   try{
-//     const {name } = req.params;
-//     const place  = await Place.findOne({name})
-
-//     if (!place){
-//       return res.status(404).json({message: "Place not found"})
-//     }
-
-//   }
-// });

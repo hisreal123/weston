@@ -22,6 +22,11 @@ const mockupData = {
             roof: "Tile",
             construction: "Brick",
             cooling: "Central Air",
+            images: [
+              "https://images.unsplash.com/photo-1618946467973-a5105efa83eb?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1610565094701-ddfce4af14b5?q=80&w=1385&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1568548634530-38ee433dcc1b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           interiorDetails: {
             interiorSize: 2000,
@@ -29,11 +34,20 @@ const mockupData = {
             bathrooms: 2,
             garage: 2,
             laundryRoom: "Yes",
+            images: [
+              "https://images.unsplash.com/photo-1528908929486-dfaa209c6986?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1519642918688-7e43b19245d8?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1509805225007-73e8ba4b5be8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           roomDimensions: {
             livingRoom: 20,
             bathroom: 10,
             kitchen: 15,
+            images: [
+              "https://images.unsplash.com/photo-1487700160041-babef9c3cb55?q=80&w=1452&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1488813340362-2a31b5522ebe?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           propertyInfo: {
             propertyType: "Single Family Home",
@@ -45,7 +59,7 @@ const mockupData = {
             images: [
               //   "https://via.placeholder.com/800x600",
               "https://images.unsplash.com/photo-1688646953306-5ec93eab8c06?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGl2aW5ncm9vbSUyMGludGVyaW9yfGVufDB8fDB8fHww",
-              "https://unsplash.com/photos/a-living-room-filled-with-furniture-and-decor-zYfuVYqCdo4",
+              "https://images.unsplash.com/photo-1688647063090-36f36f692d95?q=80&w=1290&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             ],
             price: 350000,
             sqFeet: 2500,
@@ -63,6 +77,10 @@ const mockupData = {
             roof: "Thatched",
             construction: "Stone",
             cooling: "Central Air",
+            images: [
+              "https://images.unsplash.com/photo-1487798452839-c748a707a6b2?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1532490389938-2856e3f1560a?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           interiorDetails: {
             interiorSize: 5000,
@@ -70,11 +88,19 @@ const mockupData = {
             bathrooms: 4,
             garage: 3,
             laundryRoom: "Yes",
+            images: [
+              "https://images.unsplash.com/photo-1512972972907-6d71529c5e92?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1562663464-36b958487cd6?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           roomDimensions: {
             livingRoom: 40,
             bathroom: 15,
             kitchen: 25,
+            images: [
+              "https://images.unsplash.com/photo-1559294094-ef9682194038?q=80&w=1283&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1459801722795-3d86a4dfda53?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           propertyInfo: {
             propertyType: "Luxury Villa",
@@ -103,6 +129,10 @@ const mockupData = {
             roof: "xy",
             construction: "xyz",
             cooling: "cooler",
+            images: [
+              "https://images.unsplash.com/photo-1541533260371-b8fc9b596d84?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1529113241001-b495badd8d44?q=80&w=1342&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           interiorDetails: {
             interiorSize: 1200,
@@ -110,11 +140,19 @@ const mockupData = {
             bathrooms: 2,
             garage: 1,
             laundryRoom: "In Unit",
+            images: [
+              "https://images.unsplash.com/photo-1540809799-5da9372c3f64?q=80&w=1324&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1517706355179-794182e1e0d4?q=80&w=1322&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           roomDimensions: {
             livingRoom: 15,
             bathroom: 8,
             kitchen: 10,
+            images: [
+              "https://images.unsplash.com/photo-1540932239986-30128078f3c5?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1603904068158-f4ce1371dbc8?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           propertyInfo: {
             propertyType: "Apartment",
@@ -143,6 +181,10 @@ const mockupData = {
             roof: "Flat",
             construction: "Steel Frame",
             cooling: "Central Air",
+            images: [
+              "https://images.unsplash.com/photo-1504198458649-3128b932f49e?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1506377295352-e3154d43ea9e?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           interiorDetails: {
             interiorSize: 5800, // in square feet
@@ -150,11 +192,19 @@ const mockupData = {
             bathrooms: 5,
             garage: 6,
             laundryRoom: "Common Area",
+            images: [
+              "https://images.unsplash.com/photo-1444419988131-046ed4e5ffd6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1518299734107-83b069adf8af?q=80&w=1336&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           roomDimensions: {
             livingRoom: 5,
             bathroom: 5,
             kitchen: 5,
+            images: [
+              "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://images.unsplash.com/photo-1531471689044-dd3ca86632e1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ],
           },
           propertyInfo: {
             propertyType: "Office Space",
