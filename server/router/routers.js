@@ -30,10 +30,10 @@ const getPropertyByCategory = async (req, res) => {
   // const { category } = req.params;
 
   try {
-    const categories = await Property.distinct("category");
-    res.json(categories);
+    const category = await Property.distinct("category");
+    res.json(category);
 
-    if (!categories) {
+    if (!category) {
       res.staus(500).send("No category found");
     }
   } catch (err) {
@@ -44,18 +44,13 @@ const getPropertyByCategory = async (req, res) => {
 
 /** get all  property by specific category Name */
 const getPropertyByCategoryName = async (req, res) => {
-  const category = req.params.category.trim().toLowerCase(); // Handle potential inconsistencies
+  const category = req.params.category; // Handle potential inconsistencies
 
   try {
-    // If you need to serialize the entire object and potential circular references are unavoidable:
-    // const getData = await Property.findOne({ category: { $in: [category] } }).toJSON({ virtuals: true });
-
-    // If returning only specific properties is sufficient:
     console.log("Searching for:", category);
-    const getData = await Property.findOne({ category: { $in: [category] } });
+    const getData = await Property.find({ category });
 
     if (getData) {
-      const getData = await Property.findOne({ category: { $in: [category] } });
       console.log("Found data:", getData);
     } else {
       res.status(204).end(); // No properties found
