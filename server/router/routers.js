@@ -45,16 +45,42 @@ const getPropertyByCategory = async (req, res) => {
 };
 
 /** get all  property by specific category Name */
+// const getPropertyByCategoryName = async (req, res) => {
+//   if (ObjectId.isValid(req.params.category)) {
+//     Property.findOne({ category: ObjectId(req.params.category) })
+//       .then((doc) => {
+//         if (doc) {
+//           res.status(200).json(doc);
+//         } else {
+//           res.status(404).json({ error: "Category not found" });
+//         }
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         res.status(500).json({ error: "Internal server error" });
+//       });
+//   } else {
+//     res.status(400).json({ error: "Invalid category ID format" });
+//   }
+// };
 const getPropertyByCategoryName = async (req, res) => {
-  // if (ObjectId.isValid(req.params.category)) {
-  //   Property.findOne({ category: ObjectId(req.params, category) })
-  //     .then((doc) => res.status(200).json(doc))
-  //     .catch((err) => {
-  //       res.status(500).json({ error: "error" });
-  //     });
-  // } else res.status(500).json({ error: "Error " });
-};
+  const category = req.params.category;
 
+  try {
+    console.log("Searching for:", category);
+    const specificProperty = await Property.findOne({ category });
+
+    if (specificProperty) {
+      console.log("Found property:", specificProperty);
+      res.status(200).json(specificProperty);
+    } else {
+      res.status(204).end(); // No property found
+    }
+  } catch (err) {
+    console.error("Error getting specific property:", err);
+    res.status(500).send("Error retrieving property");
+  }
+};
 /** Send message */
 
 const isValidRequest = ({ firstName, lastName, email, phone, message }) => {};

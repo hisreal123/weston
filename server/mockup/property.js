@@ -12,7 +12,7 @@ const readyData = [
       "https://images.unsplash.com/photo-1519642918688-7e43b19245d8?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1509805225007-73e8ba4b5be8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
-    category: ["Living House"],
+    category: "Living House",
     address: {
       street: "123 Main St",
       city: "Anytown",
@@ -55,7 +55,7 @@ const readyData = [
       "https://images.unsplash.com/photo-1512917773924-59661f41bb45?q=80&w=1400&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1568523089211-179fb51d9313?q=80&w=1400&auto=format&fit=crop",
     ],
-    category: ["House Villa"],
+    category: "House Villa",
     address: {
       street: "456 Villa Way",
       city: "Luxuryville",
