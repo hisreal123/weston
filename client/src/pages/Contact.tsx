@@ -11,6 +11,7 @@ const Contact: React.FC = () => {
 
     if (!values.firstName) {
       errors.firstName = "Required";
+      toast.error("First name is required ");
     } else if (values.firstName.length > 15 || values.firstName.length < 3) {
       errors.firstName = "Must be more that 3 and less than 15 ";
     }
@@ -62,6 +63,7 @@ const Contact: React.FC = () => {
             type="text"
             name="firstName"
             id="firstName"
+            required
             className=" border-b border-gray-700 p-2 w-fit outline-none"
             placeholder="First Name"
             onChange={formik.handleChange}
@@ -71,6 +73,7 @@ const Contact: React.FC = () => {
           <input
             type="text"
             name="lastName"
+            required
             id=""
             className=" border-b border-gray-700 p-2 w-fit outline-none"
             placeholder="Last Name"
@@ -81,6 +84,7 @@ const Contact: React.FC = () => {
             type="email"
             name="email"
             id="email"
+            required
             className="border-b border-gray-700  p-2 w-fit outline-none"
             placeholder="Email"
             onChange={formik.handleChange}
@@ -90,6 +94,7 @@ const Contact: React.FC = () => {
           <input
             type="text"
             name="phone"
+            required
             id="phone"
             className="border-b border-gray-700 p-2 w-fit outline-none"
             placeholder="Phone"
@@ -102,6 +107,7 @@ const Contact: React.FC = () => {
             cols={4}
             id="message"
             name="message"
+            required
             placeholder="Message"
             className="border-b border-gray-400  p-2 outline-none"
             onChange={formik.handleChange}

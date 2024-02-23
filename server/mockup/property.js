@@ -92,7 +92,7 @@ const readyData = [
       "https://images.unsplash.com/photo-1588985282512-920617e6d3f0?q=80&w=1400&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1599920172133-31be2e4f35da?q=80&w=1400&auto=format&fit=crop",
     ],
-    category: ["House Apartment"],
+    category: "House Apartment",
     address: {
       street: "789 Downtown Ave",
       city: "Metropolis",
@@ -129,7 +129,7 @@ const readyData = [
       "https://images.unsplash.com/photo-1592523428491-0193a21e02a3?q=80&w=1400&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1576875642977-5dcbf4d9d953?q=80&w=1400&auto=format&fit=crop",
     ],
-    category: ["Office Floors"],
+    category: "Office Floors",
     address: {
       street: "321 Business Blvd",
       city: "Downtown",

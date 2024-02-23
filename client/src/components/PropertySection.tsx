@@ -1,7 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import CustormButton from "./CustormButton";
 import toast from "react-hot-toast";
+import axiosInstance from "../utils/api";
 
 interface CategoryProps {
   category: string;
@@ -11,14 +11,10 @@ const PropertySection: React.FC = () => {
   const [catTitle, setCatTitle] = useState<string>("");
   const [catData, setCatData] = useState([] as []);
 
-  const baseURL =
-    import.meta.env.VITE_API_KEY || import.meta.env.VITE_LOCAL_KEY;
-  console.log(baseURL);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${baseURL}/api/properties/categories`);
+        const res = await axiosInstance.get(`/api/properties/categories`);
         const data = res.data;
         setCategories(data);
         console.log(data);
@@ -27,7 +23,7 @@ const PropertySection: React.FC = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [catData]);
 
   const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     toast.success("You clicked this !!");
@@ -39,8 +35,8 @@ const PropertySection: React.FC = () => {
     const fetchCatData = async () => {
       if (catTitle) {
         try {
-          const res = await axios.get(
-            `${baseURL}api/properties/categories/${catTitle}`
+          const res = await axiosInstance.get(
+            `/api/properties/categories/${catTitle}`
           );
           const data = res.data;
           setCatData(data);
@@ -50,13 +46,38 @@ const PropertySection: React.FC = () => {
       }
     };
     fetchCatData();
-  }, []);
+  }, [catTitle]);
 
   console.log(catData);
   console.log(catTitle);
+
+  // const returnDataImage = {Object.entries(catData).map(([key, value]) => {
+  //         return (
+  //           <div key={key}>
+  //             <p>{value?.amenities}</p>
+  //             {/* <p>{value?.name}</p> */}
+
+  //             {/* Uncomment this section if you want to map through amenities */}
+  //             {/* {value.amenities?.map((t, index) => (
+  //             <p key={index}>{t}</p>
+  //           ))} */}
+
+  //             <div className="property-images">
+  //               {value?.images?.map((img, index) => (
+  //                 <img
+  //                   key={index}
+  //                   src={img}
+  //                   alt={`Property Image ${index}`}
+  //                   className="property-image"
+  //                 />
+  //               ))}
+  //             </div>
+  //           </div>
+  //         );
+  //       })}
   return (
     <>
-      <div className="block px-4 mx-auto md:w-1/2 ">
+      <div className="block px-4 mx-auto md:w-1/2">
         <div className="flex items-center justify-center ">
           {categories.map((value, index) => (
             <div className="p-2" key={index}>
@@ -69,6 +90,33 @@ const PropertySection: React.FC = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div className="content">
+        {Object.entries(catData).map(([key, value]) => {
+          return (
+            <div key={key}>
+              {/* <p>{value?.amenities}</p> */}
+              <p>{value?.name}</p>
+
+              {/* Uncomment this section if you want to map through amenities */}
+              {/* {value.amenities?.map((t, index) => (
+              <p key={index}>{t}</p>
+            ))} */}
+
+              {/* <div className="property-images">
+                {value?.images?.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img}
+                    alt={`Property Image ${index}`}
+                    className="property-image"
+                  />
+                ))}
+              </div> */}
+            </div>
+          );
+        })}
       </div>
     </>
   );

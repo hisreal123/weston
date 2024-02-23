@@ -3,7 +3,6 @@ import React, { Suspense } from "react";
 import { Link } from "react-router-dom";
 import CustormButton from "../components/CustormButton";
 import Team from "../components/Team";
-// import Team = lazy(() => import(''../components/Team'))
 
 const About: React.FC = () => {
   return (

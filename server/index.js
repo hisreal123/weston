@@ -20,12 +20,20 @@ app.use(
   })
 );
 
-// const insertMessage = new Message(messageData);
+// const insertMessage = new Property(readyData);
 
 // insertMessage
 //   .save()
 //   .then((data) => console.log("Data inserted !!!"))
 //   .catch((err) => console.log("Not inserted !!:", err));
+
+// Property.insertMany(readyData)
+//   .then((doc) => {
+//     console.log("Inserted data !!");
+//   })
+//   .catch((err) => {
+//     console.log("Not inserted !!");
+//   });
 
 const PORT = 4000;
 
@@ -37,7 +45,7 @@ app.get("/", (req, res) => {
 app.use("/api", router);
 
 app.listen(PORT, () => {
-  console.log(" Listening on port", PORT);
+  console.log("Listening on port", PORT);
 });
 
 /** get team*/

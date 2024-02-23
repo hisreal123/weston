@@ -63,8 +63,10 @@ const getPropertyByCategory = async (req, res) => {
 //     res.status(400).json({ error: "Invalid category ID format" });
 //   }
 // };
+
 const getPropertyByCategoryName = async (req, res) => {
   const category = req.params.category;
+  console.log(category);
 
   try {
     console.log("Searching for:", category);
@@ -83,7 +85,6 @@ const getPropertyByCategoryName = async (req, res) => {
 };
 /** Send message */
 
-const isValidRequest = ({ firstName, lastName, email, phone, message }) => {};
 
 const sendMessage = async (req, res) => {
   const { firstName, lastName, email, phone, message } = req.body;
