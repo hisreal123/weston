@@ -18,7 +18,7 @@ const propertySchema = new mongoose.Schema({
     postalCode: { type: String, required: true },
     country: { type: String, required: true },
   },
-  category: [{ type: String }],
+  category: { type: String },
   size: {
     totalArea: { type: Number, required: true },
     livingArea: { type: Number },

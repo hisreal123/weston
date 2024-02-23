@@ -44,14 +44,37 @@ const getPropertyByCategory = async (req, res) => {
 };
 
 /** get all  property by specific category Name */
-const getPropertyByCategoryName = async (req, res) => {
-  // if (ObjectId.isValid(req.params.category)) {
-  //   Property.findOne({ category: ObjectId(req.params, category) })
-  //     .then((doc) => res.status(200).json(doc))
-  //     .catch((err) => {
-  //       res.status(500).json({ error: "error" });
-  //     });
-  // } else res.status(500).json({ error: "Error " });
+// const getPropertyByCategoryName = async (req, res) => {
+//   if (ObjectId.isValid(req.params.category)) {
+//     Property.findOne({ category: ObjectId(req.params.category) })
+//       .then((doc) => {
+//         if (doc) {
+//           res.status(200).json(doc);
+//         } else {
+//           res.status(404).json({ error: "Category not found" });
+//         }
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         res.status(500).json({ error: "Internal server error" });
+//       });
+//   } else {
+//     res.status(400).json({ error: "Invalid category ID format" });
+//   }
+// };
+const getPropertiesByCategoryName = async (req, res) => {
+  const { category } = req.params;
+
+  try {
+    const properties = await Property.find({ category: category });
+    if (!properties) {
+      return res.status(404).json({ error: "Category not found" });
+    }
+    res.status(200).json(property);
+  } catch (err) {
+    console.log(`Error fetching properties for category ${category}:`, err);
+    res.status(500).send(`Error fetching properties for category ${category}`);
+  }
 };
 
 /** Send message */
@@ -60,7 +83,7 @@ const sendMessage = async (req, res) => {
   const { message } = req.body;
   console.log(message);
   try {
-    const newMessage = new Message({message});
+    const newMessage = new Message({ message });
     await newMessage.save();
     res.status(201).json({ message: "Message sent sucessfully !" });
   } catch (err) {
@@ -75,7 +98,7 @@ const sendMessage = async (req, res) => {
 router.get("/", getAllProperties);
 router.get("/name/:name", getPropertyByName);
 router.get("/categories", getPropertyByCategory);
-router.get("/categories/:category", getPropertyByCategoryName);
+router.get("/categories/:category", getPropertiesByCategoryName);
 
 /** Post Endpoints*/
 router.post("/message", sendMessage);
