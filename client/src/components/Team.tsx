@@ -1,8 +1,8 @@
-import axios from "axios";
 import React, { Suspense, useEffect, useState } from "react";
 import placeholder from "/assets/placeholder.svg";
 import CustormButton from "./CustormButton";
 import toast from "react-hot-toast";
+import axiosInstance from "../utils/api";
 interface TeamDataProps {
   imageUrl: string;
   name: string;
@@ -13,14 +13,12 @@ const Team: React.FC = () => {
     team: { [key: string]: TeamDataProps };
   }>({ team: {} });
 
-  const baseURL = "http://localhost:4000/";
-
   const filterImageData = Array.from(Object.values(teamData.team));
 
   useEffect(() => {
     const fetchedData = async () => {
       try {
-        const res = await axios.get(`${baseURL}api/team`);
+        const res = await axiosInstance.get("/api/team");
         setTeamData(res.data);
       } catch (error) {
         console.log("Error fetching data", error);

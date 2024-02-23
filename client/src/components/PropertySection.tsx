@@ -2,9 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import CustormButton from "./CustormButton";
 import toast from "react-hot-toast";
-// import { Link } from "react-router-dom";
-// import { SectionSchema } from "../../index.ts";
-// import { Property } from "../../index.ts";
 
 interface CategoryProps {
   category: string;
@@ -12,14 +9,16 @@ interface CategoryProps {
 const PropertySection: React.FC = () => {
   const [categories, setCategories] = useState<CategoryProps[]>([]);
   const [catTitle, setCatTitle] = useState<string>("");
-  const [catData, setCatData] = useState([] as Array);
+  const [catData, setCatData] = useState([] as []);
 
-  const baseURL = "http://localhost:4000/";
+  const baseURL =
+    import.meta.env.VITE_API_KEY || import.meta.env.VITE_LOCAL_KEY;
+  console.log(baseURL);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${baseURL}api/properties/categories`);
+        const res = await axios.get(`${baseURL}/api/properties/categories`);
         const data = res.data;
         setCategories(data);
         console.log(data);
@@ -30,10 +29,10 @@ const PropertySection: React.FC = () => {
     fetchData();
   }, []);
 
-  const handleButton = (e: string) => {
+  const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     toast.success("You clicked this !!");
     // console.log(category);
-    setCatTitle(e.target.value);
+    setCatTitle(e.currentTarget.value);
   };
 
   useEffect(() => {

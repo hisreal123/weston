@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 });
 
 /** All places api calls */
-app.use("/api/properties", router);
+app.use("/api", router);
 
 app.listen(PORT, () => {
   console.log(" Listening on port", PORT);

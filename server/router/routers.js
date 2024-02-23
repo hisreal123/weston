@@ -2,6 +2,7 @@ const Message = require("../model/Message");
 const Property = require("../model/Property");
 const express = require("express");
 const router = express.Router();
+const { check, validationResult } = require("express-validator");
 
 /** get all properties */
 const getAllProperties = async (req, res) => {
@@ -56,26 +57,44 @@ const getPropertyByCategoryName = async (req, res) => {
 
 /** Send message */
 
+const isValidRequest = ({ firstName, lastName, email, phone, message }) => {};
+
 const sendMessage = async (req, res) => {
-  const { message } = req.body;
-  console.log(message);
+  const { firstName, lastName, email, phone, message } = req.body;
+  check("firstName", "First Name length Error").isString();
+  check("lastName", "Last Name is required").isString();
+  check("email", "Email length Error").isEmail();
+
+  const errors = validationResult({
+    firstName,
+    lastName,
+    email,
+    phone,
+    message,
+  });
+
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() }); // Return validation errors
+  }
+
   try {
-    const newMessage = new Message({message});
+    const newMessage = new Message(req.body);
     await newMessage.save();
-    res.status(201).json({ message: "Message sent sucessfully !" });
+    res.status(200).json({ message: `Message sent successfully to ${email}` });
   } catch (err) {
-    console.log(err);
-    res.status(500).json({ error: "Failed to send message " });
+    console.error(err);
+    res.status(500).json({ error: "Internal server error." });
   }
 };
+
 // Post Message
 // const postMessage('/message', )
 
 /** get Endpoints*/
 router.get("/", getAllProperties);
-router.get("/name/:name", getPropertyByName);
-router.get("/categories", getPropertyByCategory);
-router.get("/categories/:category", getPropertyByCategoryName);
+router.get("/properties/name/:name", getPropertyByName);
+router.get("/properties/categories", getPropertyByCategory);
+router.get("/properties/categories/:category", getPropertyByCategoryName);
 
 /** Post Endpoints*/
 router.post("/message", sendMessage);
