@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import CustormButton from "../components/CustormButton";
 import Discover from "../components/Discover";
 // import axios from "axios";
-import Sections from "../components/Sections";
+import CategoryShowCase from "../components/CategoryShowCase";
 
 const Home: React.FC = () => {
   return (
@@ -58,11 +58,11 @@ const Home: React.FC = () => {
               WHAT AREA ARE YOU LOOKING FOR?
             </h1>
             <p className="text-#808080 text-xs md:text-sm ">
-              We have the bebst to suit your interes and are all afordable{" "}
+              We have the best to suit your interes and are all afordable{" "}
             </p>
           </div>
 
-          <Sections />
+          <CategoryShowCase />
         </section>
         {/* Areas */}
 

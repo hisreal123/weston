@@ -5,7 +5,7 @@ interface Section {
   // Add any other properties of section here
 }
 
-const Sections: React.FC = () => {
+const CategoryShowCase: React.FC = () => {
   const [dataImage, setDataImage] = useState<string>("");
   const [dataSection, setDataSections] = useState<Section[]>([]);
 
@@ -48,4 +48,4 @@ const Sections: React.FC = () => {
   );
 };
 
-export default Sections;
+export default CategoryShowCase;

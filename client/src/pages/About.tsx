@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 
 import { Link } from "react-router-dom";
 import CustormButton from "../components/CustormButton";
 import Team from "../components/Team";
+// import Team = lazy(() => import(''../components/Team'))
 
 const About: React.FC = () => {
   return (
@@ -34,13 +35,13 @@ const About: React.FC = () => {
           <div className="right hidden lg:block  relative overflow-hidden">
             <div className="lg:block relative">
               <img
-                src="./assets/home_img.svg"
-                alt="home_img"
+                src="./assets/about_img.svg"
+                alt="about_img"
                 height={100}
                 width={100}
                 className="h-full w-full"
               />
-            </div> 
+            </div>
           </div>
         </div>
       </div>
@@ -100,7 +101,10 @@ const About: React.FC = () => {
       </section>
 
       {/* MEMBERS OF TEAM */}
-      <Team />
+
+      <Suspense fallback={<div>Loading .....</div>}>
+        <Team />
+      </Suspense>
     </>
   );
 };

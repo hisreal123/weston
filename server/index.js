@@ -5,6 +5,8 @@ const cors = require("cors");
 const router = require("./router/routers");
 const readyData = require("./mockup/property");
 const Property = require("./model/Property");
+const Message = require("./model/Message");
+const messageData = require("./mockup/message");
 
 connectDB();
 
@@ -18,8 +20,11 @@ app.use(
   })
 );
 
-// Property.insertMany(readyData)
-//   .then((properties) => console.log("Data inserted !!!"))
+// const insertMessage = new Message(messageData);
+
+// insertMessage
+//   .save()
+//   .then((data) => console.log("Data inserted !!!"))
 //   .catch((err) => console.log("Not inserted !!:", err));
 
 const PORT = 4000;

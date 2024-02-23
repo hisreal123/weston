@@ -47,11 +47,11 @@ const Team: React.FC = () => {
 
       <Suspense fallback="loading...">
         <div className="wrap">
-          <div className="div grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 md:gap-4 w-4/5 mx-auto  gap-4 relative ">
+          <div className="div grid grid-cols-1 lg:grid-cols-3 px-10 py-4 md:px-0 md:grid-cols-2 md:gap-4 md:w-4/5 mx-auto gap-4 relative ">
             {filterImageData.map((data, index) => (
               <>
-                <div className="relative" key={index}>
-                  <div className="h-[200px] w-1/2 relative md:h-[375px] md:w-[324px] overflow-hidden">
+                <div className="relative " key={index}>
+                  <div className="h-[400px]  relative w-full md:h-[375px] md:w-[324px] overflow-hidden">
                     <img
                       src={data.imageUrl || placeholder}
                       alt={data?.name}

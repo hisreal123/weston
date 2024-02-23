@@ -5,7 +5,7 @@ import NotFound from "./pages/NotFound";
 import Navigation from "./components/Navigation";
 import Properties from "./pages/Properties";
 import Contact from "./pages/Contact";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
     </>
   );
