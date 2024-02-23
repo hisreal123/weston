@@ -62,21 +62,24 @@ const getPropertyByCategory = async (req, res) => {
 //     res.status(400).json({ error: "Invalid category ID format" });
 //   }
 // };
-const getPropertiesByCategoryName = async (req, res) => {
-  const { category } = req.params;
+const getPropertyByCategoryName = async (req, res) => {
+  const category = req.params.category;
 
   try {
-    const properties = await Property.find({ category: category });
-    if (!properties) {
-      return res.status(404).json({ error: "Category not found" });
+    console.log("Searching for:", category);
+    const specificProperty = await Property.findOne({ category });
+
+    if (specificProperty) {
+      console.log("Found property:", specificProperty);
+      res.status(200).json(specificProperty);
+    } else {
+      res.status(204).end(); // No property found
     }
-    res.status(200).json(property);
   } catch (err) {
-    console.log(`Error fetching properties for category ${category}:`, err);
-    res.status(500).send(`Error fetching properties for category ${category}`);
+    console.error("Error getting specific property:", err);
+    res.status(500).send("Error retrieving property");
   }
 };
-
 /** Send message */
 
 const sendMessage = async (req, res) => {
@@ -98,7 +101,7 @@ const sendMessage = async (req, res) => {
 router.get("/", getAllProperties);
 router.get("/name/:name", getPropertyByName);
 router.get("/categories", getPropertyByCategory);
-router.get("/categories/:category", getPropertiesByCategoryName);
+router.get("/categories/:category", getPropertyByCategoryName);
 
 /** Post Endpoints*/
 router.post("/message", sendMessage);
