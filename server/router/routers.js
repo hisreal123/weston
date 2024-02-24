@@ -85,7 +85,6 @@ const getPropertyByCategoryName = async (req, res) => {
 };
 /** Send message */
 
-
 const sendMessage = async (req, res) => {
   const { firstName, lastName, email, phone, message } = req.body;
   check("firstName", "First Name length Error").isString();
@@ -108,6 +107,7 @@ const sendMessage = async (req, res) => {
     const newMessage = new Message(req.body);
     await newMessage.save();
     res.status(200).json({ message: `Message sent successfully to ${email}` });
+    console.log({ message: `Message sent successfully to ${email}` });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Internal server error." });

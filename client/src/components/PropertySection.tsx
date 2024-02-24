@@ -113,7 +113,7 @@ const PropertySection: React.FC = () => {
                     className="property-image"
                   />
                 ))}
-              </div> */}
+              </div>   */}
             </div>
           );
         })}
