@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import CustormButton from "../components/CustormButton";
 import axiosInstance from "../utils/api";
+import { useQuery } from "react-query";
+
 interface PostData {
   _id: string;
   imgURL: string;
@@ -23,19 +25,27 @@ const Details: React.FC = () => {
     content: "",
   }); // Initialize postData as an object
 
-  useEffect(() => {
-    const fetchedData = async () => {
-      try {
-        const res = await axiosInstance.get<PostData>(`/api/blog/${_id}`);
-        setPostData(res.data); // Update postData with fetched data
-      } catch (error) {
-        console.log("Error fetching data", error);
-      }
-    };
-    fetchedData();
-  }, [_id]); // Add _id to the dependency array to fetch data when _id changes
+  const { data, isLoading, isError } = useQuery<PostData>(
+    ["post", _id],
+    async () => {
+      const res = await axiosInstance.get<PostData>(`/api/blog/${_id}`);
+      return res.data;
+    }
+  );
 
-  // console.log(postData); // Log postData to see the fetched data
+  useEffect(() => {
+    if (data) {
+      setPostData(data);
+    }
+  }, [data]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error fetching data</div>;
+  }
 
   return (
     <>
