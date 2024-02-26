@@ -59,7 +59,7 @@ const PropertySection: React.FC = () => {
   }, [catTitle]);
 
   console.log(catData);
-  console.log(catTitle);
+  // console.log(catTitle);
 
   // const returnDataImage = {Object.entries(catData).map(([key, value]) => {
   //         return (

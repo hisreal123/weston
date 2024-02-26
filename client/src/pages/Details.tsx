@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import CustormButton from "../components/CustormButton";
 import axiosInstance from "../utils/api";
 import { useQuery } from "react-query";
+import Loading from "../components/Loading";
 
 interface PostData {
   _id: string;
@@ -40,7 +41,12 @@ const Details: React.FC = () => {
   }, [data]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="h-screen flex justify-center items-center ">
+        <Loading />
+        {/** you can add custom_style to this and change the background color.*/}
+      </div>
+    );
   }
 
   if (isError) {

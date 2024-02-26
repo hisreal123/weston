@@ -85,9 +85,9 @@ const sendMessage = async (req, res) => {
     const newMessage = new Message(req.body);
     await newMessage.save();
     res.status(200).json({ message: `Message sent successfully to ${email}` });
-    console.log({ message: `Message sent successfully to ${email}` });
+    // console.log({ message: `Message sent successfully to ${email}` });
   } catch (err) {
-    console.error(err);
+    // console.error(err);
     res.status(500).json({ error: "Internal server error." });
   }
 };
@@ -96,9 +96,9 @@ const getBlogPost = async (req, res) => {
   try {
     const blogPost = await Blog.find();
     res.status(200).json(blogPost);
-    console.log({ blogPost });
+    // console.log({ blogPost });
   } catch (err) {
-    console.log("Error fetching blog:", err);
+    // console.log("Error fetching blog:", err);
     res.status(500).json({ message: err });
   }
 };
