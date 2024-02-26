@@ -69,17 +69,17 @@ const sendMessage = async (req, res) => {
   // check("lastName", "Last Name is required").isString();
   // check("email", "Email length Error").isEmail();
 
-  const errors = validationResult({
-    firstName,
-    lastName,
-    email,
-    phone,
-    message,
-  });
+  // const errors = validationResult({
+  //   firstName,
+  //   lastName,
+  //   email,
+  //   phone,
+  //   message,
+  // });
 
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() }); // Return validation errors
-  }
+  // if (!errors.isEmpty()) {
+  //   return res.status(400).json({ errors: errors.array() }); // Return validation errors
+  // }
 
   try {
     const newMessage = new Message(req.body);
