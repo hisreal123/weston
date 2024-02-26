@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import CustormButton from "../components/CustormButton";
-
+import axiosInstance from "../utils/api";
 interface PostData {
   _id: string;
   imgURL: string;
@@ -24,12 +23,10 @@ const Details: React.FC = () => {
     content: "",
   }); // Initialize postData as an object
 
-  const baseURL = "http://localhost:4000/api/blog";
-
   useEffect(() => {
     const fetchedData = async () => {
       try {
-        const res = await axios.get<PostData>(`${baseURL}/${_id}`);
+        const res = await axiosInstance.get<PostData>(`/api/blog/${_id}`);
         setPostData(res.data); // Update postData with fetched data
       } catch (error) {
         console.log("Error fetching data", error);
@@ -38,7 +35,7 @@ const Details: React.FC = () => {
     fetchedData();
   }, [_id]); // Add _id to the dependency array to fetch data when _id changes
 
-  console.log(postData); // Log postData to see the fetched data
+  // console.log(postData); // Log postData to see the fetched data
 
   return (
     <>

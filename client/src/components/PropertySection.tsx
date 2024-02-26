@@ -102,34 +102,36 @@ const PropertySection: React.FC = () => {
         </div>
       </div>
 
-      <div className="content">
-        {Object.entries(catData).map(([key, value]) => {
-          return (
-            <div key={key}>
-              {/* <p>{value?.amenities}</p> */}
-              <p>{value?.name}</p>
-
-              {/* Uncomment this section if you want to map through amenities */}
-              {/* {value.amenities?.map((t, index) => (
-              <p key={index}>{t}</p>
-            ))} */}
-
-              {/* <div className="property-images">
-                {value?.images?.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img}
-                    alt={`Property Image ${index}`}
-                    className="property-image"
-                  />
-                ))}
-              </div>   */}
-            </div>
-          );
-        })}
-      </div>
+      <div className="content"></div>
     </>
   );
 };
 
 export default PropertySection;
+
+//  {
+//    Object.entries(catData).map(([key, value]) => {
+//      return (
+//        <div key={key}>
+//          {/* <p>{value?.amenities}</p> */}
+//          <p>{value?.name}</p>
+
+//          {/* Uncomment this section if you want to map through amenities */}
+//          {/* {value.amenities?.map((t, index) => (
+//               <p key={index}>{t}</p>
+//             ))} */}
+
+//          {/* <div className="property-images">
+//                 {value?.images?.map((img, index) => (
+//                   <img
+//                     key={index}
+//                     src={img}
+//                     alt={`Property Image ${index}`}
+//                     className="property-image"
+//                   />
+//                 ))}
+//               </div>   */}
+//        </div>
+//      );
+//    });
+//  }

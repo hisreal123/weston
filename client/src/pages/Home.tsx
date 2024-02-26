@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 import CustormButton from "../components/CustormButton";
 import Discover from "../components/Discover";
-// import axios from "axios";
 // import CategoryShowCase from "../components/CategoryShowCase";
 import Listing from "../components/Listing";
 import Testimony from "../components/Testimony";
 import { BlogCard } from "../components/BlogCard";
 import { useEffect, useState } from "react";
-// import axiosInstance from "../utils/api";
-import axios from "axios";
+import axiosInstance from "../utils/api";
+
 
 const Home: React.FC = () => {
   const [blogData, setBlogData] = useState([] as []);
@@ -16,7 +15,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchedData = async () => {
       try {
-        const res = await axios.get("http://localhost:4000/api/blog");
+        const res = await axiosInstance.get("/api/blog");
         setBlogData(res.data);
         // console.log(res.data);
 
@@ -41,7 +40,7 @@ const Home: React.FC = () => {
   }, [blogData]);
 
   const filteredBlogData = Array.from(Object.values(blogData));
-  console.log(filteredBlogData);
+  // console.log(filteredBlogData);
 
   return (
     <>

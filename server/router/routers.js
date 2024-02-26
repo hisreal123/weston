@@ -114,8 +114,6 @@ const getBlogPostById = async (req, res) => {
   } catch (e) {
     res.status(400).json({ message: e });
   }
-
-  console.log(req.body.id);
 };
 
 // Post Message
