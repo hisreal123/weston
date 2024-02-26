@@ -2,7 +2,7 @@ const Message = require("../model/Message");
 const Property = require("../model/Property");
 const express = require("express");
 const router = express.Router();
-const { check, validationResult } = require("express-validator");
+const Blog = require("../model/Blog");
 
 /** get all properties */
 const getAllProperties = async (req, res) => {
@@ -29,8 +29,6 @@ const getPropertyByName = async (req, res) => {
 
 /** get all  property category*/
 const getPropertyByCategory = async (req, res) => {
-  // const { category } = req.params;
-
   try {
     const categories = await Property.distinct("category");
     res.json(categories);
@@ -43,26 +41,6 @@ const getPropertyByCategory = async (req, res) => {
     res.status(500).send("Error fetching the property category:");
   }
 };
-
-/** get all  property by specific category Name */
-// const getPropertyByCategoryName = async (req, res) => {
-//   if (ObjectId.isValid(req.params.category)) {
-//     Property.findOne({ category: ObjectId(req.params.category) })
-//       .then((doc) => {
-//         if (doc) {
-//           res.status(200).json(doc);
-//         } else {
-//           res.status(404).json({ error: "Category not found" });
-//         }
-//       })
-//       .catch((err) => {
-//         console.error(err);
-//         res.status(500).json({ error: "Internal server error" });
-//       });
-//   } else {
-//     res.status(400).json({ error: "Invalid category ID format" });
-//   }
-// };
 
 const getPropertyByCategoryName = async (req, res) => {
   const category = req.params.category;
@@ -114,6 +92,32 @@ const sendMessage = async (req, res) => {
   }
 };
 
+const getBlogPost = async (req, res) => {
+  try {
+    const blogPost = await Blog.find();
+    res.status(200).json(blogPost);
+    console.log({ blogPost });
+  } catch (err) {
+    console.log("Error fetching blog:", err);
+    res.status(500).json({ message: err });
+  }
+};
+
+const getBlogPostById = async (req, res) => {
+  try {
+    const postId = req.params._id;
+    const data = await Blog.findById(postId);
+    if (!data) {
+      throw Error("No post found with this" + " ID");
+    }
+    res.status(200).json(data);
+  } catch (e) {
+    res.status(400).json({ message: e });
+  }
+
+  console.log(req.body.id);
+};
+
 // Post Message
 // const postMessage('/message', )
 
@@ -122,6 +126,10 @@ router.get("/", getAllProperties);
 router.get("/properties/name/:name", getPropertyByName);
 router.get("/properties/categories", getPropertyByCategory);
 router.get("/properties/categories/:category", getPropertyByCategoryName);
+
+/** get BlogPost*/
+router.get("/blog", getBlogPost);
+router.get("/blog/:_id", getBlogPostById);
 
 /** Post Endpoints*/
 router.post("/message", sendMessage);

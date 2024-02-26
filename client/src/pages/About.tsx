@@ -8,14 +8,17 @@ const About: React.FC = () => {
   return (
     <>
       <div className="lg:px-0 mt-[50px] lg:mt-[0]">
-        <div className="lg:flex lg:space-x-3 max-h-screen h-screen">
+        <div className="lg:grid md:grid-cols-2 grid-cols-1 lg:space-x-3 max-h-screen h-screen">
           <div className="px-5 lg:px-8 left lg:w-fit lg:h-full relative h-screen -translate-y-15 lg:translate-y-2 justify-center flex flex-col space-y-7 ">
             <h1 className="text-3xl font-bold md:w-4/5 md:text-5xl ">
               MEET THE WESTON REAL ESTATE
             </h1>
             <p className="text-xs md:text-sm text-[#808080] md:w-4/5">
               Meet the Weston Real Estate, your premier destination for
-              personalized property solutions.
+              personalized property solutions. Meet the Weston Real Estate, your
+              premier destination for personalized property solutions. Meet the
+              Weston Real Estate, your premier destination for personalized
+              property solutions.
             </p>
             <p className="text-xs md:text-sm text-[#808080] md:w-4/5">
               At Weston Real Estate, we don't just sell houses; we create

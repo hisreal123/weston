@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import CustormButton from "../components/CustormButton";
 import toast from "react-hot-toast";
 import { useFormik } from "formik";
 import { FormValues } from "../../index";
 import axiosInstance from "../utils/api";
+import Loading from "../components/Loading";
 
 const Contact: React.FC = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+
   const validate = (values: FormValues) => {
     const errors: Partial<FormValues> = {};
 
@@ -15,6 +18,28 @@ const Contact: React.FC = () => {
     } else if (values.firstName.length > 15 || values.firstName.length < 3) {
       errors.firstName = "Must be more that 3 and less than 15 ";
     }
+
+    if (!values.lastName) {
+      errors.lastName = "Required";
+    }
+
+    if (!values.email) {
+      errors.email = "Required";
+    } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
+      errors.email = "Invalid email format";
+    }
+
+    // if (!values.phone) {
+    //   errors.phone = "Required";
+    // } else if (!/^[0-9]{10}$/.test(values.phone)) {
+    //   errors.phone = "Invalid phone number";
+    // }
+
+    if (!values.message) {
+      errors.message = "Required";
+    }
+
+    return errors;
   };
 
   const initialValues: FormValues = {
@@ -28,17 +53,22 @@ const Contact: React.FC = () => {
   const formik = useFormik({
     initialValues: initialValues,
     validate,
-    onSubmit: async (values) => {
+    onSubmit: async (values: FormValues, { resetForm }) => {
+      setLoading(true);
       try {
         const res = await axiosInstance.post("/api/message", values);
-        if (res.status == 200) {
-          toast.success("message sent to the server ");
-          console.log(res);
-        } else {
-          console.log("Error sending message !");
+
+        if (res.status === 200) {
+          toast.success("Message sent to the server ");
+          resetForm();
         }
+        // else {
+        //   console.log("Error sending message!");
+        // }
       } catch (err) {
-        toast.error(" Error sending message !! ");
+        toast.error("Error sending message!!");
+      } finally {
+        setLoading(false);
       }
     },
   });
@@ -64,33 +94,36 @@ const Contact: React.FC = () => {
             name="firstName"
             id="firstName"
             required
-            className=" border-b border-gray-700 p-2 w-fit outline-none"
+            className="border-b border-gray-700 p-2 w-fit outline-none"
             placeholder="First Name"
             onChange={formik.handleChange}
             value={formik.values.firstName}
           />
-          {formik.errors.firstName ? <>{formik.errors.firstName}</> : null}
+          {formik.errors.firstName ? (
+            <div>{formik.errors.firstName}</div>
+          ) : null}
           <input
             type="text"
             name="lastName"
             required
-            id=""
-            className=" border-b border-gray-700 p-2 w-fit outline-none"
+            id="lastName"
+            className="border-b border-gray-700 p-2 w-fit outline-none"
             placeholder="Last Name"
             onChange={formik.handleChange}
             value={formik.values.lastName}
           />
+          {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
           <input
             type="email"
             name="email"
             id="email"
             required
-            className="border-b border-gray-700  p-2 w-fit outline-none"
+            className="border-b border-gray-700 p-2 w-fit outline-none"
             placeholder="Email"
             onChange={formik.handleChange}
             value={formik.values.email}
           />
-
+          {formik.errors.email ? <div>{formik.errors.email}</div> : null}
           <input
             type="text"
             name="phone"
@@ -101,7 +134,7 @@ const Contact: React.FC = () => {
             onChange={formik.handleChange}
             value={formik.values.phone}
           />
-
+          {formik.errors.phone ? <div>{formik.errors.phone}</div> : null}
           <textarea
             rows={4}
             cols={4}
@@ -109,14 +142,16 @@ const Contact: React.FC = () => {
             name="message"
             required
             placeholder="Message"
-            className="border-b border-gray-400  p-2 outline-none"
+            className="border-b border-gray-400 p-2 outline-none"
             onChange={formik.handleChange}
             value={formik.values.message}
           />
-
+          {formik.errors.message ? <div>{formik.errors.message}</div> : null}
           <CustormButton
-            context="SUBMIT"
-            custom_style="border border-gray-700 w-fit mx-auto mt-3 px-6 hover:bg-black hover:text-white"
+            context={loading ? <Loading /> : "SUBMIT"}
+            custom_style={` ${
+              loading ? "bg-none" : "hover:bg-black"
+            } border border-gray-700 w-fit mx-auto mt-3 px-6  hover:text-white`}
           />
         </form>
       </div>

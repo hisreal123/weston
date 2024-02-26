@@ -3,16 +3,20 @@ import placeholder from "/assets/placeholder.svg";
 import CustormButton from "./CustormButton";
 import toast from "react-hot-toast";
 import axiosInstance from "../utils/api";
+import { motion } from "framer-motion";
+
 interface TeamDataProps {
   imageUrl: string;
   name: string;
   position: string;
 }
+
 const Team: React.FC = () => {
   const [teamData, setTeamData] = useState<{
     team: { [key: string]: TeamDataProps };
   }>({ team: {} });
 
+  // converts the Object to an array.
   const filterImageData = Array.from(Object.values(teamData.team));
 
   useEffect(() => {
@@ -20,14 +24,27 @@ const Team: React.FC = () => {
       try {
         const res = await axiosInstance.get("/api/team");
         setTeamData(res.data);
+
+        // set the data into teamData and store it in local storage for next reload, a better way to optimize server
+        localStorage.setItem("teamData", JSON.stringify(res.data));
       } catch (error) {
-        console.log("Error fetching data", error);
+        // console.log("Error fetching data", error);
       }
     };
     fetchedData();
+
+    // now we check if the data is empty, den it assing the data from localStorage to localData, or we use fetchedData()
+    if (Object.keys(teamData.team).length === 0) {
+      const localData = localStorage.getItem("teamData");
+      if (localData) {
+        setTeamData(JSON.parse(localData));
+      } else {
+        fetchedData();
+      }
+    }
   }, [teamData]);
 
-  console.log(teamData);
+  // console.log(teamData);
 
   /** add more button*/
   const handleAddMore = () => {
@@ -48,7 +65,13 @@ const Team: React.FC = () => {
           <div className="div grid grid-cols-1 lg:grid-cols-3 px-10 py-4 md:px-0 md:grid-cols-2 md:gap-4 md:w-4/5 mx-auto gap-4 relative ">
             {filterImageData.map((data, index) => (
               <>
-                <div className="relative " key={index}>
+                <motion.div
+                  className="relative "
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 5 }}
+                >
                   <div className="h-[400px]  relative w-full md:h-[375px] md:w-[324px] overflow-hidden">
                     <img
                       src={data.imageUrl || placeholder}
@@ -65,7 +88,7 @@ const Team: React.FC = () => {
                       {data?.position}
                     </span>
                   </div>
-                </div>
+                </motion.div>
               </>
             ))}
           </div>

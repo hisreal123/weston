@@ -5,8 +5,8 @@ const Properties: React.FC = () => {
   return (
     <section>
       <div className="lg:px-0 mt-[50px] lg:mt-[0]">
-        <div className="lg:flex lg:space-x-3 max-h-screen lg:h-screen pb-10 lg:pb-0 lg:justify-between lg:flex-row-reverse">
-          <div className="right  lg:block  relative overflow-hidden">
+        <div className="lg:grid md:grid-cols-2 grid-cols-1 lg:space-x-3 pb-10 lg:pb-0 lg:justify-between col-span-1">
+          <div className="right  lg:block  relative overflow-hidden md:order-last">
             <div className="lg:block relative">
               <img
                 src="./assets/home_img.svg"
@@ -17,7 +17,7 @@ const Properties: React.FC = () => {
               />
             </div>
           </div>
-          <div className=" w-full px-5 lg:px-8 left lg:w-fit lg:h-full relative items-center md:items-start justify-center lg:translate-y-2  flex flex-col mt-6 md:mt-0 space-y-4 lg:space-y-7 ">
+          <div className="py-16 md:py-0  w-full px-5 lg:px-8 left lg:w-fit lg:h-full relative items-center md:items-start justify-center lg:translate-y-2  flex flex-col mt-6 md:mt-0 space-y-4 lg:space-y-7 ">
             <h1 className="text-3xl font-bold md:text-5xl ">Our Properties</h1>
             <p className="text-[14px] text-center md:text-left md:text-sm text-[#808080] md:w-4/5">
               We offer the best and you will love what you see

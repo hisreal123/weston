@@ -1,11 +1,10 @@
 import React from "react";
 
 type CustormButtonProps = {
-  context: string;
+  context: string | React.ReactNode;
   custom_style: string;
   type?: "submit" | "reset" | "button";
-  fn?: (e: any) => void;
-
+  fn?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   value?: number | string;
 };
 

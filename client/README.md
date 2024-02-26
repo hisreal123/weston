@@ -28,5 +28,11 @@ export default {
 #@hisreal123 created and worked on this miniproject for a school choice comparison between AngularJs and ReactJS.
 
 ## Point Of Refrence
-### form handling 
-##
+## Routing  - React Router, 
+## Form handling 
+## Components
+## Form Handling - Formik
+## Form Validation - zod
+## Styling - Tailwindcss(utility first)
+## Type checking - Typescript
+## 

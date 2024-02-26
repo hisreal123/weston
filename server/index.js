@@ -7,6 +7,9 @@ const readyData = require("./mockup/property");
 const Property = require("./model/Property");
 const Message = require("./model/Message");
 const messageData = require("./mockup/message");
+const Blog = require("./model/Blog");
+const blogData = require("./mockup/blog");
+const { default: mongoose } = require("mongoose");
 
 connectDB();
 
@@ -20,20 +23,38 @@ app.use(
   })
 );
 
-// const insertMessage = new Property(readyData);
-
-// insertMessage
-//   .save()
-//   .then((data) => console.log("Data inserted !!!"))
-//   .catch((err) => console.log("Not inserted !!:", err));
-
-// Property.insertMany(readyData)
+// Blog.insertMany(blogData)
 //   .then((doc) => {
 //     console.log("Inserted data !!");
 //   })
 //   .catch((err) => {
 //     console.log("Not inserted !!");
 //   });
+
+// const updateBlogData = async () => {
+//   try {
+//     // Check if any data exists
+//     const existingData = await Blog.find();
+
+//     if (existingData.length > 0) {
+//       // If data exists, delete it
+//       await Blog.deleteMany();
+//       console.log("Existing data deleted.");
+//     }
+
+//     // Insert new data
+//     await Blog.insertMany(blogData);
+//     console.log("New data inserted.");
+//   } catch (err) {
+//     console.error("Error updating blog data:", err);
+//   } finally {
+//     // Close the connection after updating
+//     mongoose.connection.close();
+//   }
+// };
+
+// Call the function to update blog data
+// updateBlogData();
 
 const PORT = 4000;
 

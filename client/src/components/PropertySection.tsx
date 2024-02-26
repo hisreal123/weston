@@ -18,11 +18,21 @@ const PropertySection: React.FC = () => {
         const data = res.data;
         setCategories(data);
         console.log(data);
+        localStorage.setItem("categoriesTitle", JSON.stringify(res.data));
       } catch (error) {
         console.log("Error fetching data", error);
       }
     };
     fetchData();
+
+    if (Object.keys(categories).length === 0) {
+      const localData = localStorage.getItem("categoriesTitle");
+      if (localData) {
+        setCategories(JSON.parse(localData));
+      } else {
+        fetchData();
+      }
+    }
   }, [catData]);
 
   const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
