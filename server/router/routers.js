@@ -65,9 +65,9 @@ const getPropertyByCategoryName = async (req, res) => {
 
 const sendMessage = async (req, res) => {
   const { firstName, lastName, email, phone, message } = req.body;
-  check("firstName", "First Name length Error").isString();
-  check("lastName", "Last Name is required").isString();
-  check("email", "Email length Error").isEmail();
+  // check("firstName", "First Name length Error").isString();
+  // check("lastName", "Last Name is required").isString();
+  // check("email", "Email length Error").isEmail();
 
   const errors = validationResult({
     firstName,
