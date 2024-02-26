@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: ["http://localhost:5173", "https://p-weston.vercel.app"],
-    Credential: true,
+    credentials: true,
   })
 );
 

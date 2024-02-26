@@ -10,4 +10,5 @@ export interface axiosProps {
   baseURL: string;
   timeout?: number;
   headers: Record<string, string>;
+  withCredentials: boolean;
 }
