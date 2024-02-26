@@ -33,7 +33,7 @@ const PropertySection: React.FC = () => {
         fetchData();
       }
     }
-  }, [catData]);
+  }, [categories]);
 
   const handleButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     toast.success("You clicked this !!");
