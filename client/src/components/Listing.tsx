@@ -26,7 +26,7 @@ const Listing = (): JSX.Element => {
     <div className="wrapper py-8 md:py-0 ">
       <div className="relative">
         {images.map((image, index) => (
-          <div className="h-full w-full overflow-hidden">
+          <div className="h-full w-full overflow-hidden" key={index}>
             <img
               key={index}
               src={image}

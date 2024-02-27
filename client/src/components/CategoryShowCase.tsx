@@ -42,10 +42,9 @@ const CategoryShowCase: React.FC = () => {
   return (
     <>
       <div>
-        <h1> Section</h1>
-        <div className="wrapper relative h-[450px] w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
+        <div className="wrapper relative w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
           {firstImages.map((item, index) => (
-            <div className="wrapper relative h-[300px] md:h-full" key={index}>
+            <div className="wrapper relative h-[320px] md:h-full" key={index}>
               <div className="wrap relative h-full">
                 <div className="h-full w-full">
                   <img
@@ -54,7 +53,7 @@ const CategoryShowCase: React.FC = () => {
                     alt={`Property image ${index}`}
                   />
                 </div>
-                <p className=" tex-center bg-black/40 px-3 py-2 absolute w-full bottom-0 text-center text-white font-bold">
+                <p className=" tex-center hover:bg-black/80 bg-black/40 px-3 py-3 absolute w-full bottom-0 text-center text-white font-bold">
                   {item.category}
                 </p>
               </div>

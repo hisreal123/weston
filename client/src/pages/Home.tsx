@@ -162,8 +162,7 @@ const Home: React.FC = () => {
               EXCLUSIVE LISTINGS
             </h1>
             <p className="text-#808080 text-xs md:text-sm ">
-              Mauris primis turpis Laoreet magna felis mi amet quam enim curae.
-              Sodales semper tempor dictum faucibus habitasse.{" "}
+              Everything you want and need is within your reach at WESTON
             </p>
           </div>
 

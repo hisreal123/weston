@@ -46,19 +46,20 @@ const ExpertLocations: React.FC = () => {
   return (
     <div>
       <h1>Expert Locations</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
         {firstImages.map((item, index) => (
           <Link to="/properties" key={index}>
-            <div className="overflow-hidden">
+            <div className="overflow-hidden relative">
               <div
                 className="relative w-full h-[275px] overflow-hidden bg-center bg-cover 
-              hover:bg-blend-multiply transition-all duration-300 ease-in-out hover:scale-105 transform group flex justify-center items-center"
+                    hover:bg-blend-multiply transition-all duration-300 ease-in-out hover:scale-105 transform group flex
+                    justify-center items-center"
                 style={{
                   backgroundImage: `url(${item.imageUrl})`,
                 }}
               >
                 <CustormButton
-                  custom_style="font-bold text-white group-hover:px-6"
+                  custom_style="font-bold  hover:border border-white  text-lg md:text-xl text-white group-hover:px-6"
                   context={`${item.state}`}
                 />
               </div>

@@ -7,13 +7,13 @@ import { PropertyData } from "../../index";
 const PropertyDetails: React.FC = () => {
   const [data, setData] = useState<PropertyData | null>(null);
 
-  const { name } = useParams<{ name: string }>();
+  const { category } = useParams<{ category: string }>();
 
   useEffect(() => {
     const fetchCatData = async () => {
       try {
         const res = await axiosInstance.get<PropertyData>(
-          `/api/properties/categories/${name}`
+          `/api/properties/categories/${category}`
         );
         const fetchedData = res.data;
         console.log(res.data);
@@ -28,10 +28,10 @@ const PropertyDetails: React.FC = () => {
       }
     };
     fetchCatData();
-  }, [name]);
+  }, [category]);
 
   return (
-    <div className="px-5 mt-50">
+    <div className="px-5 mt-[100px]">
       {data && (
         <section>
           <div className="tp border-b border-gray-500 pb-4 mb-5">
@@ -42,9 +42,9 @@ const PropertyDetails: React.FC = () => {
             {data.images && data.images.length > 0 && (
               <div className="md:h-[450px] w-full">
                 <img
-                  src={data.images[0]}
+                  src={data.images[2]}
                   alt={`Property image number 1`}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-conver "
                 />
               </div>
             )}
