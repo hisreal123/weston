@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import CustormButton from "../components/CustormButton";
 import Discover from "../components/Discover";
-// import CategoryShowCase from "../components/CategoryShowCase";
+import CategoryShowCase from "../components/CategoryShowCase";
 import Listing from "../components/Listing";
 import Testimony from "../components/Testimony";
 import { BlogCard } from "../components/BlogCard";
 import { useEffect, useState } from "react";
 import axiosInstance from "../utils/api";
-
+import ExpertLocations from "../components/ExpertLocations";
 
 const Home: React.FC = () => {
   const [blogData, setBlogData] = useState([] as []);
@@ -88,7 +88,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Areas */}
-        {/* 
+
         <section className="wrap ">
           <div className="top text-center lg:my-14">
             <h1 className="text-md  font-bold md:text-2xl ">
@@ -100,14 +100,12 @@ const Home: React.FC = () => {
           </div>
 
           <CategoryShowCase />
-        </section> */}
+        </section>
         {/* Areas */}
 
         <section className="wrap ">
           <div className="top text-center lg:my-14">
-            <h1 className="text-md  font-bold md:text-2xl ">
-              WHAT AREA ARE YOU LOOKING FOR?
-            </h1>
+            <h1 className="text-md  font-bold md:text-2xl ">WHO WE ARE</h1>
             <p className="text-#808080 text-xs md:text-sm ">
               We have the best to suit your interes and are all afordable
             </p>
@@ -172,15 +170,30 @@ const Home: React.FC = () => {
           <Listing />
         </section>
 
+        {/* Executive Listing  */}
+        <section className="listing">
+          <div className="top text-center my-5 md:my-14">
+            <h1 className="text-md  font-bold md:text-2xl ">
+              EXCLUSIVE LISTINGS
+            </h1>
+            <p className="text-#808080 text-xs md:text-sm ">
+              Mauris primis turpis Laoreet magna felis mi amet quam enim curae.
+              Sodales semper tempor dictum faucibus habitasse.{" "}
+            </p>
+          </div>
+
+          <ExpertLocations />
+        </section>
+
         {/* What Client says*/}
         <section className="listing">
           <div className="top text-center my-5 md:my-14">
             <h1 className="text-md  font-bold md:text-2xl ">
-              WHAT OUR CLIENT SAYS
+              AREA OF EXPERTIES
             </h1>
             <p className="text-#808080 text-xs md:text-sm ">
-              Mauris primis turpis Laoreet magna felis mi amet quam enim curae.
-              Sodales semper tempor dictum faucibus habitasse.
+              We are experts in the following locations, with certified customer
+              interest
             </p>
           </div>
 

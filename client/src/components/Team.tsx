@@ -64,32 +64,30 @@ const Team: React.FC = () => {
         <div className="wrap">
           <div className="div grid grid-cols-1 lg:grid-cols-3 px-10 py-4 md:px-0 md:grid-cols-2 md:gap-4 md:w-4/5 mx-auto gap-4 relative ">
             {filterImageData.map((data, index) => (
-              <>
-                <motion.div
-                  className="relative "
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 5 }}
-                >
-                  <div className="h-[400px]  relative w-full md:h-[375px] md:w-[324px] overflow-hidden">
-                    <img
-                      src={data.imageUrl || placeholder}
-                      alt={data?.name}
-                      height={100}
-                      width={100}
-                      className="h-full w-full object-cover hover:scale-105 transition-all duration-50 "
-                    />
-                  </div>
+              <motion.div
+                className="relative "
+                key={index}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 2 }}
+              >
+                <div className="h-[400px]  relative w-full md:h-[375px] md:w-[324px] overflow-hidden">
+                  <img
+                    src={data.imageUrl || placeholder}
+                    alt={data?.name}
+                    height={100}
+                    width={100}
+                    className="h-full w-full object-cover hover:scale-105 transition-all duration-50 "
+                  />
+                </div>
 
-                  <div className="relative mt-5 flex flex-col items-center">
-                    <span className="font-bold mb-2">{data?.name}</span>
-                    <span className="text-gray-300 font-light text-xs">
-                      {data?.position}
-                    </span>
-                  </div>
-                </motion.div>
-              </>
+                <div className="relative mt-5 flex flex-col items-center">
+                  <span className="font-bold mb-2">{data?.name}</span>
+                  <span className="text-gray-300 font-light text-xs">
+                    {data?.position}
+                  </span>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>

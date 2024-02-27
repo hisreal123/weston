@@ -31,19 +31,19 @@ app.use(
 //     console.log("Not inserted !!");
 //   });
 
-// const updateBlogData = async () => {
+// const updateProperty = async () => {
 //   try {
 //     // Check if any data exists
-//     const existingData = await Blog.find();
+//     const existingData = await Property.find();
 
 //     if (existingData.length > 0) {
 //       // If data exists, delete it
-//       await Blog.deleteMany();
+//       await Property.deleteMany();
 //       console.log("Existing data deleted.");
 //     }
 
 //     // Insert new data
-//     await Blog.insertMany(blogData);
+//     await Property.insertMany(readyData);
 //     console.log("New data inserted.");
 //   } catch (err) {
 //     console.error("Error updating blog data:", err);
@@ -53,8 +53,8 @@ app.use(
 //   }
 // };
 
-// Call the function to update blog data
-// updateBlogData();
+// Call the function to update Property Data
+// updateProperty();
 
 const PORT = 4000;
 

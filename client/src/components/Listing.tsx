@@ -23,17 +23,19 @@ const Listing = (): JSX.Element => {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper py-8 md:py-0 ">
       <div className="relative">
         {images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Image ${currentIndex + 1}`}
-            className={`h-full w-full ${
-              index === currentIndex ? " block " : "hidden"
-            }`}
-          />
+          <div className="h-full w-full overflow-hidden">
+            <img
+              key={index}
+              src={image}
+              alt={`Image ${currentIndex + 1}`}
+              className={` relative h-full w-full object-cover ${
+                index === currentIndex ? " block " : "hidden"
+              }`}
+            />
+          </div>
         ))}
 
         <div className="wrap absolute bottom-3 right-3 flex space-x-3">

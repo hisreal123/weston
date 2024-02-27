@@ -10,6 +10,7 @@ import Details from "./pages/Details";
 // import Blog from "./pages/Blog";
 import PageLayout from "./components/PageLayout";
 import { QueryClient, QueryClientProvider } from "react-query";
+import PropertyDetails from "./components/PropertyDetails";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function App() {
               <Route path="home" element={<Home />} />
               <Route path="about" element={<About />} />
               <Route path="properties" element={<Properties />} />
+              <Route path="/:category" element={<PropertyDetails />} />
               <Route path="contact" element={<Contact />} />
               {/* <Route path="blog" element={<Blog />} /> */}
               <Route path="blog/:_id" element={<Details />} />
