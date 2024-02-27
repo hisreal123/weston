@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../utils/api";
+import { Link } from "react-router-dom";
 
 interface Property {
   category: string;
@@ -53,9 +54,11 @@ const CategoryShowCase: React.FC = () => {
                     alt={`Property image ${index}`}
                   />
                 </div>
-                <p className=" tex-center hover:bg-black/80 bg-black/40 px-3 py-3 absolute w-full bottom-0 text-center text-white font-bold">
-                  {item.category}
-                </p>
+                <Link to="/properties">
+                  <p className=" tex-center hover:bg-black/80 bg-black/40 px-3 py-3 absolute w-full bottom-0 text-center text-white font-bold">
+                    {item.category}
+                  </p>
+                </Link>
               </div>
             </div>
           ))}

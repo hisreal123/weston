@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axiosInstance from "../utils/api";
 import Highlights from "./Highlights";
 import { PropertyData } from "../../index";
+import toast from "react-hot-toast";
 
 const PropertyDetails: React.FC = () => {
   const [data, setData] = useState<PropertyData | null>(null);
@@ -16,7 +17,7 @@ const PropertyDetails: React.FC = () => {
           `/api/properties/categories/${category}`
         );
         const fetchedData = res.data;
-        console.log(res.data);
+        // console.log(res.data);
         setData(fetchedData);
 
         // // Store images in localStorage
@@ -24,7 +25,8 @@ const PropertyDetails: React.FC = () => {
         //   localStorage.setItem("dataImage", JSON.stringify(fetchedData.images));
         // }
       } catch (error) {
-        console.log("Error fetching category data", error);
+        // console.log("Error fetching category data", error);
+        toast.error("Network Error !!!!");
       }
     };
     fetchCatData();
@@ -38,15 +40,39 @@ const PropertyDetails: React.FC = () => {
             <span className="block font-bold">Overview</span>
           </div>
           {/* gallery section */}
-          <div className="gallery grid grid-cols-1 md:grid-cols-1">
+          <div className="gallery grid grid-cols-1 md:grid-cols-2 gap-1">
             {data.images && data.images.length > 0 && (
-              <div className="md:h-[600px] w-full">
-                <img
-                  src={data.images[2]}
-                  alt={`Property image number 1`}
-                  className="h-full w-full object-cover object-top"
-                />
-              </div>
+              <>
+                <div className="md:h-[600px] w-full overflow-hidden">
+                  <img
+                    src={data.images[0]}
+                    alt={`Property image number 1`}
+                    className="h-full w-full object-cover "
+                  />
+                </div>
+                <div className="md:h-[600px] w-full hidden md:grid overflow-hidden  grid-rows-2 grid-cols-2 gap-1">
+                  <img
+                    src={data.images[1]}
+                    alt={`Property image number 1`}
+                    className="h-full w-full object-cover "
+                  />
+                  <img
+                    src={data.images[2]}
+                    alt={`Property image number 1`}
+                    className="h-full w-full object-cover "
+                  />
+                  <img
+                    src={data.images[3]}
+                    alt={`Property image number 1`}
+                    className="h-full w-full object-cover "
+                  />
+                  <img
+                    src={data.images[4]}
+                    alt={`Property image number 1`}
+                    className="h-full w-full object-cover "
+                  />
+                </div>
+              </>
             )}
           </div>
           {/* grid section for content */}
@@ -69,8 +95,9 @@ const PropertyDetails: React.FC = () => {
                       <h1> ${data.listingPrice}</h1>
                     </div>
 
-                    <h4 className="font-bold text-xs mb-2">
-                      Est. Payment: ${((data.listingPrice / 12) * 1).toFixed(2)}
+                    <h4 className="font-light text-xs mb-2 ">
+                      <b className="font-bold">Est. Payment: </b>$
+                      {Math.ceil((data.listingPrice / 12) * 1).toFixed(2)}
                     </h4>
                     <div className="flex space-x-2 text-xs">
                       <h5 className="font-light">
@@ -81,10 +108,12 @@ const PropertyDetails: React.FC = () => {
                       <h5 className="">
                         <b className="font-bold mr-2">Days on site: </b>
                       </h5>
-                      {data.floors / 2}
+                      {data.floors ? data.floors / 2 : 2}
                     </div>
 
-                    <h1 className="font-bold mt-5 mb-2">House DESCRIPTION</h1>
+                    <h1 className="font-bold mt-10 mdmt-5 mb-2">
+                      House DESCRIPTION
+                    </h1>
                     <p className="text-xs md:text-sm text-gray-600">
                       {data.description}
                     </p>
@@ -145,7 +174,7 @@ const PropertyDetails: React.FC = () => {
                           },
                           yearBuilt: data.floors,
                           address: {
-                            country: "USA", // You might need to update this
+                            country: data.address.country, // You might need to update this
                             state: data.address.state,
                           },
                           bathrooms: data.bathrooms,

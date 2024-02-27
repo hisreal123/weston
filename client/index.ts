@@ -18,6 +18,7 @@ export interface Address {
   city: string;
   state: string;
   postalCode: string;
+  country: string;
 }
 
 export interface Size {
@@ -41,4 +42,3 @@ export interface PropertyData {
   LaundryRoom: number;
   // Add other properties as needed
 }
-

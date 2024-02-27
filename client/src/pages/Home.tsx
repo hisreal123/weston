@@ -94,7 +94,7 @@ const Home: React.FC = () => {
             <h1 className="text-md  font-bold md:text-2xl ">
               WHAT AREA ARE YOU LOOKING FOR?
             </h1>
-            <p className="text-#808080 text-xs md:text-sm ">
+            <p className="text-#808080 text-xs md:text-sm mb-6 md:mb-0">
               We have the best to suit your interes and are all afordable{" "}
             </p>
           </div>
@@ -103,7 +103,7 @@ const Home: React.FC = () => {
         </section>
         {/* Areas */}
 
-        <section className="wrap ">
+        <section className="wrap mt-7 md:mt-0">
           <div className="top text-center lg:my-14">
             <h1 className="text-md  font-bold md:text-2xl ">WHO WE ARE</h1>
             <p className="text-#808080 text-xs md:text-sm ">
