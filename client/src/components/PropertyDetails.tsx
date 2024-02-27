@@ -40,11 +40,11 @@ const PropertyDetails: React.FC = () => {
           {/* gallery section */}
           <div className="gallery grid grid-cols-1 md:grid-cols-1">
             {data.images && data.images.length > 0 && (
-              <div className="md:h-[450px] w-full">
+              <div className="md:h-[600px] w-full">
                 <img
                   src={data.images[2]}
                   alt={`Property image number 1`}
-                  className="h-full w-full object-conver "
+                  className="h-full w-full object-cover object-top"
                 />
               </div>
             )}
